@@ -1,27 +1,24 @@
 @echo off
 TITLE AllFather BP 1.2 Genesis Launcher
-echo ==================================================
-echo       ALLFATHER PROJECT: AWAKENING SEQUENCE
-echo ==================================================
+SET "URL=http://localhost:8050"
 
-:: Check if Docker is running
+echo [1/3] Checking Environment...
 docker ps >nul 2>&1
 if %errorlevel% neq 0 (
-    echo [ERROR] Docker is not running. Launch Docker Desktop first.
+    echo [ERROR] Docker is not running.
     pause
     exit /b
 )
 
-:: Build and Start the Mesh
-echo [SYSTEM] Synthesizing Language Cores (Python, Go, Rust, SQL)...
+echo [2/3] Synthesizing Language Mesh...
 docker-compose up -d --build
 
-:: Wait for UI to warm up
-echo [SYSTEM] Warming up J.A.R.V.I.S. HUD...
-timeout /t 8 /nobreak >nul
+echo [3/3] Synchronizing J.A.R.V.I.S. HUD...
+timeout /t 10 /nobreak >nul
 
-:: Launch Interface
-start http://localhost:8050
-echo [SUCCESS] AllFather is Online.
+start %URL%
+echo.
+echo ==================================================
+echo ALLFATHER IS ONLINE. TRACKING ACTIVE.
 echo ==================================================
 pause
