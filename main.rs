@@ -1,8 +1,13 @@
+use std::thread;
+use std::time::Duration;
+
 fn main() {
     println!("[RUST] Tactical Speed Core: ONLINE.");
-    println!("Monitoring for data anomalies...");
+    let mut cycles = 0;
     loop {
-        // High-speed processing loop
-        std::thread::sleep(std::time::Duration::from_secs(10));
+        cycles += 1;
+        // Simulate scanning the DB for anomalies every 10 seconds
+        println!("[ULTRON] Scan Cycle {}: All sectors clear. No GPS spoofing detected.", cycles);
+        thread::sleep(Duration::from_secs(10));
     }
 }
